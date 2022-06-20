@@ -1,0 +1,74 @@
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+.submit-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+}
+
+ion-item {
+    // --background: #dee4e5;
+    --background: transparent;
+  }
+
+ion-container {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.item1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.item2 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.item3 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.item4 {
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.item5 {
+    grid-row: 5;
+    grid-column: 1;
+}
+
+.item6 {
+    grid-row: 6;
+    grid-column: 1;
+}
+
+.item7 {
+    grid-row: 7;
+    grid-column: 1;
+}
+
+.item8 {
+    grid-row: 8;
+    grid-column: 1;
+}
+
+.item10 {
+    grid-row: 8;
+    grid-column: 2;
+}
+
+.item11 {
+    grid-row: 9;
+    grid-column: 1/4;
+}

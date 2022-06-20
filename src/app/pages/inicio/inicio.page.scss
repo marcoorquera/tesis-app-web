@@ -1,0 +1,35 @@
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+  }
+
+@font-face{
+  src:url('../../../assets/recursos/fonts/LibreBaskerville-Bold.ttf');
+  font-family: LibreBaskerville-Bold;
+}
+
+@font-face{
+  src:url('../../../assets/recursos/fonts/Roboto-Regular.ttf');
+  font-family: Roboto-Regular;
+}
+
+.principalText{
+  font-size: 8vh;
+  font-family: LibreBaskerville-Bold;
+  // font-weight: bold;
+  padding-top: 5%;
+  // margin-left: 2%;
+  text-align: center;
+  color: #2e4447;
+  // max-height: 8vh;
+  display: flex;
+}
+
+.secondaryText{
+  font-size: 6vh;
+  font-family: Roboto-Regular;
+  margin-top: 13%;
+  // margin-left: 2%;
+  text-align: center;
+  color: #2e4447;
+  display: flex;
+}

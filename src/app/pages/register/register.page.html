@@ -1,0 +1,153 @@
+<app-menu></app-menu>
+<ion-content class="ion-padding">
+  <form class="form" [formGroup]="validations_form">
+    <ion-label position="floating" style="font-weight: bold;"> Cargar una imagen </ion-label>
+    <div>
+
+      <img style="height: 150px; width: 150px;display: none;" width="400px" height="400px" [src]="previsualizacion" id="img_upload">
+      <ion-input value="previsualizacion" (change)="capturarFile($event)" type="file"></ion-input>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nombres Completos</ion-label>
+      <ion-input [(ngModel)]="nombre" style="height: 30%; font-size: 15px;" type="text" formControlName="name">
+      </ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Apellidos Completos</ion-label>
+      <ion-input [(ngModel)]="apellido" type="text" formControlName="apellido"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.apellido">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('apellido').hasError(validation.type) && (validations_form.get('apellido').dirty || validations_form.get('apellido').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Telefono</ion-label>
+      <ion-input [(ngModel)]="telefono" type="number" formControlName="telefono"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.telefono">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('telefono').hasError(validation.type) && (validations_form.get('telefono').dirty || validations_form.get('telefono').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Direccion domiciliaria</ion-label>
+      <ion-input [(ngModel)]="direccion" type="text" formControlName="direccion"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.direccion">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('direccion').hasError(validation.type) && (validations_form.get('direccion').dirty || validations_form.get('direccion').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de la empresa</ion-label>
+      <ion-input [(ngModel)]="nombre_empresa" type="text" formControlName="nombre_empresa"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.nombre_empresa">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('nombre_empresa').hasError(validation.type) && (validations_form.get('nombre_empresa').dirty || validations_form.get('nombre_empresa').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <ion-datetime [(ngModel)]="fecha_nacimiento" formControlName="fecha_nacimiento" displayFormat="DDDD MMM D, YYYY"
+        min="1900" max="2016" value="{{CurrentDate}}"></ion-datetime>
+
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.fecha_nacimiento">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('fecha_nacimiento').hasError(validation.type) && (validations_form.get('fecha_nacimiento').dirty || validations_form.get('fecha_nacimiento').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="email" style="height: 30%; font-size: 15px;" type="text" formControlName="email">
+      </ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" style="height: 30%; font-size: 15px;" type="password" formControlName="password"
+        class="form-controll" required></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- <div>
+      <ion-input (change)="capturarFile($event)" type="file"></ion-input>
+    </div>
+    <div *ngIf="previsualizacion">
+      <img width="400px" height="400px" [src]="previsualizacion" alt="">
+    </div> -->
+
+
+
+
+
+    <ion-button class="submit-btn" (click)="tryRegister()" [disabled]="!validations_form.valid" expand="block"
+      fill="solid" size="default">Registrarse</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar style="--background: #2f4f4f">
+    <ion-title style="text-align: center; color: rgb(255, 255, 255);">© 2022 Global Muebles. Todos los derechos
+      reservados.</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToProfile()">
+      <ion-title class="title_vendor">
+        {{nombre_admin}} {{apellido_admin}}
+      </ion-title>
+      </ion-button>
+    </ion-buttons>
+    <ion-img class="image_prod_profile" [src]="img_admin" slot="end"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="botones">
+    
+    <div class="button_border">
+      <ion-button (click)="goToProfile()" class="button1 button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="person" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Perfil</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToVendedores()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="people" slot="start" style="height:70px; width: 70px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Vendedores</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToSolicitudes()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="checkmark-circle" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Solicitud de <br> vendedores</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToCategoria()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="book" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Categorias</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="newAdmin()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon slot="start" style="height:70px; width: 70px;" name="add-circle"></ion-icon>
+          </div>
+          <div>
+            <h6>Crear Admin</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="logout()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="exit" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Salir</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+  </div>
+
+
+  <!-- <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()" > 
+  <ion-list>
+    <ion-item>
+      <ion-label> Correo:</ion-label>
+      <ion-input type="email" [{[(ngModel)]="usuario.correo"}]  
+      name="'correo" requiered > 
+  
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  
+    </form> -->
+
+</ion-content>

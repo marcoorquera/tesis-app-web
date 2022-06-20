@@ -1,0 +1,64 @@
+.button_menu_cards {
+    --background: #493536;
+}
+
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+.image_prod_profile {
+    width: auto;
+    height: 90px;
+}
+
+.title_vendor {
+    text-transform: uppercase;
+    font-size: x-large;
+    color: white
+}
+
+.botones>div>ion-button {
+    width: 100%;
+    height: 100%;
+}
+
+.button_border {
+    margin: 5px;
+}
+
+@media (min-width: 2560px) {
+    .botones {
+        margin: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 95% 95% 95%;
+    }
+
+}
+
+@media (max-width: 1920px) {
+    .botones {
+        margin: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 66% 66% 66%;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .botones {
+        margin: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 41% 41% 41%;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .botones {
+        margin: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 36% 36% 36%;
+    }
+}

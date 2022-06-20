@@ -1,0 +1,120 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons>
+      <ion-button style="width: 80px; height: 80px; color:white;" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <div slot="end">
+      <ion-img class="img_vendedor_prom" [src]="img_vendedor"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="PromoForm">
+          <ion-item>
+            <ion-label position="floating">Titulo Promocion</ion-label>
+            <ion-input type="text" formControlName="titulo_promocion"></ion-input>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.titulo_promocion">
+              <div class="error-message"
+                *ngIf="PromoForm.get('titulo_promocion').hasError(error.type) && (PromoForm.get('titulo_promocion').dirty || PromoForm.get('titulo_promocion').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating">Descripcion Promocion</ion-label>
+            <ion-textarea type="text" formControlName="descripcion_promocion">
+            </ion-textarea>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.descripcion_promocion">
+              <div class="error-message"
+                *ngIf="PromoForm.get('descripcion_promocion').hasError(error.type) && (PromoForm.get('descripcion_promocion').dirty || PromoForm.get('descripcion_promocion').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+          <div>
+            <ion-label position="floating" style="font-weight: bold;"> Cargar una imagen </ion-label>
+            <ion-input value="previsualizacion" (change)="capturarFile($event)" type="file"></ion-input>
+            <img style="margin-left:2%; height: 200px; width: 200px; display: none;" width="400px" height="400px"
+              [src]="previsualizacion" id="img_upload">
+          </div>
+          <ion-button class="add-prom-btn" [disabled]="!PromoForm.valid" (click)="addPromo()" size="default"
+            expand="block">Agregar Promocion</ion-button>
+        </form>
+      </ion-col>
+      <ion-col>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              INDICE
+            </ion-col>
+            <ion-col>
+              IMAGEN
+            </ion-col>
+            <ion-col>
+              TITULO
+            </ion-col>
+            <ion-col>
+              DESCRIPCION
+            </ion-col>
+            <!-- <ion-col>
+              EDITAR
+            </ion-col> -->
+            <ion-col>
+              ELIMINAR
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let promocion of promociones; let i=index">
+
+            <ion-col>
+              <ion-input disabled="true" value="{{i+1}}"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-thumbnail>
+                <ion-img style=" margin: auto; width: 50px; height: 50px; " src={{promocion.image_promo}}></ion-img>
+
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col>
+              <ion-input *ngIf="id_user === promocion.uid_user" disabled="{{isDisabled}}"
+                [(ngModel)]="promocion.titulo_promo" [value]="promocion.old_titulo_promocion"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input *ngIf="id_user === promocion.uid_user" disabled="{{isDisabled}}"
+                [(ngModel)]="promocion.descripcion_promo" [value]="promocion.old_descripcion_promocion"></ion-input>
+            </ion-col>
+            <!-- <ion-col>              
+              <ion-button (click)="edit2(promocion.id_promo, promocion.titulo_promo, promocion.descripcion_promo, promocion.image_promo)" *ngIf="!saveChanges" color="primary">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+              <ion-button (click)="edit(promocion)" *ngIf="saveChanges" color="success">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-button>
+            </ion-col> -->
+            <ion-col>
+              {{promocion.id_promocion}}
+              <ion-button (click)="removePromo(promocion.uid_user,promocion.id_promo)" color="danger">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

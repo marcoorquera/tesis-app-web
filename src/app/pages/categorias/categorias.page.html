@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <h3 slot="end" style="text-transform: uppercase; padding-right: 25px;color:white;">CATEGORIAS</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="pushCategoria(validations_form.value)">
+    <ion-item>
+      <ion-label position="floating" color="black">Nombre de la categoria</ion-label>
+      <ion-input [(ngModel)]="nombre_categoria" style="height: 30%; font-size: 15px;" type="text"
+        formControlName="nombre_categoria"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.nombre_categoria">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('nombre_categoria').hasError(validation.type) && (validations_form.get('nombre_categoria').dirty || validations_form.get('nombre_categoria').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block" fill="solid"
+      size="default">Añadir categoria</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+  <ion-grid class="ion-padding" *ngFor="let categoria of categorias">
+    <ion-row style="border-bottom: 1px solid cadetblue; ">
+      <ion-col class="col-10">
+        <p style="font-size: 3vh;">{{categoria.nombre_categoria}}</p>
+      </ion-col>
+
+      <ion-col class="col-2">
+        <p style="text-align: right;">
+          <ion-button (click)="removeCategorias(categoria.id_categoria)" color="danger">
+            <li class="far fa-trash-alt"> </li>
+          </ion-button>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

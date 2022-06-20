@@ -1,0 +1,21 @@
+.backButton {
+    width: 80px;
+    height: 80px;
+    color: white;
+}
+
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+.button_decline {
+    height: 100%;
+    width: 100%;
+    --background: darkred;
+}
+
+.button_accept {
+    height: 100%;
+    width: 100%;
+    --background: #89ac76;
+}

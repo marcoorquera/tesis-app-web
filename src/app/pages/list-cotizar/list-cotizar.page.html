@@ -1,0 +1,165 @@
+<ion-header>
+
+</ion-header>
+<ion-content>
+  <div >
+
+    <div [hidden]="fechaEnable" class="fecha">
+      <ion-toolbar>
+        <ion-buttons>
+          <ion-button style="width: 80px; height: 80px; color:white;"  (click)="goToMenu()">
+            <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+              
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-item button *ngFor="let fecha of num_fechas; let i =index" (click)="showUser(fecha.id)">
+
+        <ion-avatar slot="start">
+          <img src="https://www.fiverr.com/support/article_attachments/360020049978" />
+        </ion-avatar>
+        <ion-label>
+          <h2>
+            <p>Fecha Pedido </p>
+          </h2>
+          <h2>
+            <p>{{fecha.id}} </p>
+          </h2>
+
+        </ion-label>
+
+      </ion-item>
+    </div>
+
+
+    <div [hidden]="userEnable" class="usuarios">
+
+      <ion-toolbar>
+        <ion-buttons>
+          <ion-button style="width: 80px; height: 80px; color:white;" (click)="showDate()">
+            <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-list>
+        <ion-list-header> Cotizaciones </ion-list-header>
+
+        <ion-item button *ngFor="let user of num_user; let i =index" (click)="showListPedidos(user.fecha,user.id)">
+          <ion-avatar slot="start">
+            <img src={{user.imagen}} />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{user.nombre}} {{user.apellido}}</h2>
+            <h3>{{user.telefono}}</h3>
+            <p>{{user.email}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+
+    <div [hidden]="pedidosEnable" class="usuarios_pedidos">
+
+
+
+      <ion-toolbar>
+        <ion-buttons>
+          <ion-button style="width: 80px; height: 80px; color:white;" (click)="showUser(fecha_pedido)">
+            <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-list>
+        <ion-list-header> Cotizaciones </ion-list-header>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src={{imagen_usuario}} />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{nombre_usuario}} </h2>
+            <h3>{{telefono_usuario}}</h3>
+            <p>{{correo_usuario}}</p>
+          </ion-label>
+        </ion-item>
+
+
+      </ion-list>
+      <div id="div1">
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Hora pedido</th>
+              <th scope="col">Costo Unitario</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of dataPedidos; let i =index">
+              <th scope="row"> {{i+1}}</th>
+              <td>
+                <ion-thumbnail>
+                  <ion-img style=" margin: auto; width: 50px; height: 50px; " src={{p.imagen}}></ion-img>
+
+                </ion-thumbnail>
+              </td>
+              <td> {{p.cantidad}}</td>
+              <td>{{p.nombreProducto}}</td>
+
+              <td>{{p.hora}}</td>
+              <td>{{p.costoUnidad}}</td>
+              <td> {{p.subtotal}}</td>
+            </tr>
+
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+                <h3> Total: </h3>
+              </td>
+              <h3>${{acum}} </h3>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+
+    <!--     
+      <div *ngFor="let user of num_user; let i =index">
+        <div>
+          <div class="empresa">
+  
+            <div class="">
+              <p>Usuario {{user.nombre}} </p>
+  
+            </div>
+            <br>
+          </div>
+        </div>
+      </div> -->
+
+
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+.image_prod_prod {
+    width: auto;
+    height: 90px;
+}
+
+.backButton {
+    width: auto;
+    height: 80px;
+    color: white;
+}
+
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+ion-item {
+    // --background: #dee4e5;
+    --background: transparent;
+}
+
+ion-card {
+    --background: transparent;
+}
+
+.btn-enter {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+}
+
+.button_edit {
+    width: 50px;
+    --background: #2f4f4f;
+}
+
+.button_remove {
+    --background: darkred;
+    width: 50px;
+}
+
+.check_available {
+    --checkmark-color: white;
+    --background-checked: #2f4f4f;
+    --border-color: black;
+    --border-color-checked: black;
+}

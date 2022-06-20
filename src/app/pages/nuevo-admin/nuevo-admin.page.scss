@@ -1,0 +1,19 @@
+.backButton {
+    width: 80px;
+    height: 80px;
+    color: white;
+}
+
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+ion-item {
+    --background: transparent;
+}
+
+.submit-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+}

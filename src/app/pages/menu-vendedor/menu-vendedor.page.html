@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToProfile()">
+        <ion-title class="title_vendor">
+          {{nombre_empresa}}
+        </ion-title>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-img class="image_prod_profile" [src]="image_vendedor" slot="end"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="botones">
+
+    <div class="button_border">
+      <ion-button (click)="goToProfile()" class="button1 button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="cart" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Mi tienda</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToProductos()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon slot="start" style="height:70px; width: 70px;" name="add-circle"></ion-icon>
+          </div>
+          <div>
+            <h6>Agregar <br> Productos</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToListCotizar()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon slot="user" style="height:70px; width: 70px;" name="people-circle-outline"></ion-icon>
+          </div>
+          <div>
+            <h6>Cotizaciones</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="goToPromocion()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="book" slot="start" style="height:60px; width: 60px;" name="pricetags"></ion-icon>
+          </div>
+          <div>
+            <h6>Promociones</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="button_border">
+      <ion-button (click)="logout()" class="button_menu_cards">
+        <div>
+          <div>
+            <ion-icon name="exit" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Salir</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div> 
+
+   </div> 
+
+
+</ion-content>

@@ -1,0 +1,199 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <h3 slot="end" style="text-transform: uppercase; padding-right: 25px;color: white;">ADMINISTRADORES</h3>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content class="ion-padding">
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
+      <!-- <ion-label position="floating"> Cargar una imagen </ion-label> -->
+      <ion-label position="floating" style="font-weight: bold;"> Cargar una imagen </ion-label>
+      <div>
+
+        <img style="margin-left: 25%; border-radius: 100%; width: 200px; height: 200px;" [src]="previsualizacion"
+          id="img_upload" style="display: none;"><br>
+        <ion-input value="previsualizacion" (change)="capturarFile($event)" type="file"></ion-input>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Nombres Completos</ion-label>
+        <ion-input [(ngModel)]="nombre" style="height: 30%; font-size: 15px;" type="text" formControlName="name">
+        </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.name">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Apellidos Completos</ion-label>
+        <ion-input [(ngModel)]="apellido" type="text" formControlName="apellido"></ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.apellido">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('apellido').hasError(validation.type) && (validations_form.get('apellido').dirty || validations_form.get('apellido').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input [(ngModel)]="telefono" type="number" formControlName="telefono"></ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.telefono">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('telefono').hasError(validation.type) && (validations_form.get('telefono').dirty || validations_form.get('telefono').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- <ion-item>
+        <ion-label position="floating" >Direccion domiciliaria</ion-label>
+        <ion-input [(ngModel)]="direccion" type="text" formControlName="direccion"></ion-input>
+      </ion-item>
+              
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.direccion">
+          <div style="color: #eb445a;" class="error-message" *ngIf="validations_form.get('direccion').hasError(validation.type) && (validations_form.get('direccion').dirty || validations_form.get('direccion').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div> -->
+
+      <!-- <ion-item>
+        <ion-label position="floating" >Nombre de la empresa</ion-label>
+        <ion-input [(ngModel)]="nombre_empresa" type="text" formControlName="nombre_empresa"></ion-input>
+      </ion-item>
+              
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.nombre_empresa">
+          <div style="color: #eb445a;" class="error-message" *ngIf="validations_form.get('nombre_empresa').hasError(validation.type) && (validations_form.get('nombre_empresa').dirty || validations_form.get('nombre_empresa').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div> -->
+
+      <!-- <ion-item>
+        <ion-label position="floating" >Fecha de nacimiento</ion-label>
+        <ion-datetime [(ngModel)]="fecha_nacimiento" formControlName="fecha_nacimiento" displayFormat="DDDD MMM D, YYYY" min="2005" max="2016" value="{{CurrentDate}}"></ion-datetime>    
+      
+      </ion-item>
+              
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.fecha_nacimiento">
+          <div style="color: #eb445a;" class="error-message" *ngIf="validations_form.get('fecha_nacimiento').hasError(validation.type) && (validations_form.get('fecha_nacimiento').dirty || validations_form.get('fecha_nacimiento').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div> -->
+
+
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="email" style="height: 30%; font-size: 15px;" type="text" formControlName="email">
+        </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" style="height: 30%; font-size: 15px;" type="password"
+          formControlName="password" class="form-controll" required></ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block" fill="solid"
+        size="default">Registrarse</ion-button>
+      <label class="error-message">{{errorMessage}}</label>
+      <label class="success-message">{{successMessage}}</label>
+    </form>
+
+    <ion-item-sliding *ngFor="let p of admins">
+      <ion-card style="background-color: transparent;">
+        <ion-card-header>
+          <th scope="col" style="text-transform: uppercase; color:black"> {{p.nombre_admin}} </th>
+
+        </ion-card-header>
+
+
+        <ion-card-content>
+
+          <div class="container">
+            <div class="row">
+
+              <div class="col">
+
+                <ion-thumbnail>
+                  <ion-img style="margin: auto; width: 100px; height: 100px; border-radius: 100%;" src={{p.imagen_admin}}></ion-img>
+
+                </ion-thumbnail>
+
+
+              </div>
+
+              <div class="col" style="color:black">
+                <p> Nombre : {{p.nombre_admin}} {{p.apellido_admin}}
+                  <br>
+                  Telefono : {{p.telefono_admin}}
+                  <br>
+                  Correo : {{p.email_admin}}
+                  <br>
+                  <br>
+                  <br>
+                </p>
+              </div>
+              <div class="col">
+
+
+                <ion-checkbox color="primary" checked={{p.estado}}
+                  (ionChange)="changeEstado($event,p.uid_user,p.id_admin)"> Activo/Inactivo</ion-checkbox>
+
+                <ion-label style="color: black;"> &nbsp;&nbsp;Activo / Inactivo</ion-label>
+
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item-sliding>
+
+
+  </ion-content>

@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="height: 90px;">
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <h3 slot="end" style="text-transform: uppercase; padding-right: 25px;color:white;">MI PERFIL</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size="3" class="container_img">
+        <img class="img_profile" src="{{user[5]}}"><br>
+
+        <ion-button class="change-photo-btn" fill="solid" expand="full" (click)="takePicture()">Cambiar foto
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Nombres</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="nombre_edited" value="{{user[7]}}"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label>Fecha de Nacimiento</ion-label>
+        <ion-datetime disabled="{{isDisabled}}" displayFormat="DDDD MMM D, YYYY" min="1940" max=2030
+          [(ngModel)]="fecha_nacimiento_edited" value="{{user[4]}}" display-timezone="utc"></ion-datetime>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Apellidos</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="apellido_edited" value="{{user[0]}}"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label>Direccion</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="direccion_edited" value="{{user[1]}}"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Correo Electrónico</ion-label>
+        <ion-input disabled="true" [(ngModel)]="email_edited" value="{{user[2]}}"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label>Empresa</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="empresa_edited" value="{{user[6]}}"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Teléfono</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="telefono_edited" value="{{user[8]}}"></ion-input>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-col>
+          <ion-button fill="solid" shape="round" expand="full" (click)="editProfile()" *ngIf="!saveChanges">Editar</ion-button>
+          <ion-button fill="solid" shape="round" expand="full" (click)="GuardarCambios()" *ngIf="saveChanges">Guardar</ion-button>
+        </ion-col> -->
+        <ion-button class="edit-btn" *ngIf="!saveChanges" (click)="editProfile()" expand="block">
+          <ion-icon slot="start" name="create"></ion-icon>
+          Editar Perfil
+        </ion-button>
+        <ion-button class="save-btn" *ngIf="saveChanges" (click)="GuardarCambios()" expand="block">
+          <ion-icon slot="start" name="save"></ion-icon>
+          Guardar Cambios
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center ion-margin-top">
+          <ion-button class="change-psw-btn" (click)="changePassword()" expand="block">
+            Cambiar Contraseña
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

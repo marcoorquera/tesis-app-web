@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <h3 slot="end" style="text-transform: uppercase; padding-right: 25px; color:white">LISTA DE VENDEDORES</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-sliding *ngFor="let vende of vendedor">
+    <ion-card style="background-color: transparent;">
+
+      <ion-card-header>
+        <th scope="col" style="color: black; text-transform: uppercase;"> {{vende.nombre_empresa}} </th>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+
+              <ion-thumbnail>
+                <ion-img style="margin: auto; width: 100px; height: 100px; border-radius: 100%;"
+                  src={{vende.image_vendedor}}></ion-img>
+              </ion-thumbnail>
+
+
+            </div>
+            <div class="col" style="color: black;">
+
+              <p> Nombre : {{vende.nombre_vendedor}} {{vende.apellido_vendedor}}
+                <br>
+                Telefono : {{vende.telefono_vendedor}}
+                <br>
+                Dirección : {{vende.direccion_vendedor}}
+                <br>
+                Correo : {{vende.email_vendedor}}
+                <br>
+                <br>
+              </p>
+
+            </div>
+            <div class="col">
+
+
+              <ion-checkbox color="primary" checked={{vende.estado}}
+                (ionChange)="changeEstado($event,vende.uid_vendedor)"> Activo/Inactivo</ion-checkbox>
+
+              <ion-label> &nbsp;&nbsp;Activo/Inactivo</ion-label>
+
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-sliding>
+
+</ion-content>

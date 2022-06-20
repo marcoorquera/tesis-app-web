@@ -1,0 +1,40 @@
+<!-- Header without a border -->
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #2f4f4f">    
+
+    <ion-grid>
+      
+      <ion-item style="flex-grow: 7" (click)="goToHome()" button="true">
+        <ion-title slot="start" class="title_home">Global Muebles</ion-title>
+      </ion-item>  
+
+      <ion-item (click)="goToHome()" button="true">
+        <ion-icon name="home" slot="start"></ion-icon>
+        <ion-title slot="start">Inicio</ion-title>
+      </ion-item>
+
+      <ion-item (click)="goToLogin()" button="true">
+        <ion-icon  name="log-in" slot="start"></ion-icon>
+        Ingresar
+      </ion-item>
+
+      <ion-item (click)="goToRegister()" button="true">
+        <ion-icon  button="true" name="person-add" slot="start"></ion-icon>
+        Ser Vendedor
+      </ion-item>
+
+      <!-- <ion-item button="true">
+        <ion-icon  name="briefcase" slot="start"></ion-icon>
+        Contacto
+      </ion-item> -->
+
+      <ion-item button="true">
+        <ion-icon name="business" slot="start"></ion-icon>
+        Nosotros
+      </ion-item>
+
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-header>
+

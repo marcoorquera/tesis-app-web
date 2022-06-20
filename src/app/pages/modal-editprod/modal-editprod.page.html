@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Producto</ion-title>
+    <ion-button (click)="salir()" fill="clear" slot="end">
+      <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+
+      Cerrar</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div *ngIf="image_prod">
+                  <img width="400px" height="400px" [src]="image_prod" alt="">
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-col>  
+                  <p><b>Nombre del producto: </b> {{nombre}}</p>
+                  <p><b>Descripcion del producto: </b>{{descripcion}}</p>
+                  <p><b>Precio del producto: </b>{{precio}}</p>
+  
+                  <p><b>Categoria del producto: </b>{{categoria}}</p>
+                </ion-col>
+              </ion-col>
+            </ion-row>
+            
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      
+        <ion-col>
+        <ion-item>
+          <ion-input (change)="capturarFile($event)" type="file"></ion-input>        
+        </ion-item>
+        <ion-item>
+          <ion-label>Nombre del producto</ion-label>
+          <ion-input [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Descripción del producto</ion-label>
+          <ion-input [(ngModel)]="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Precio del producto</ion-label>
+          <ion-input [(ngModel)]="precio" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Categorias</ion-label>
+            <ion-select [(ngModel)]="categoria" name="categoria" value="{{categoria}}">
+              <ion-select-option  *ngFor="let categoria of categoriaList;"  >{{categoria.nombre_categoria}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-button (click)="guardar(id_user)">
+          Guardar Cambios
+        </ion-button>
+        
+      </ion-col>
+      
+      
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

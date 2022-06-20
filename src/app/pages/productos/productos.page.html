@@ -1,0 +1,167 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons>
+      <ion-button class="backButton" (click)="goToMenu()">
+        <ion-icon style="font-size: 60px;" name="chevron-back-circle-outline">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+    <div slot="end">
+      <ion-img class="image_prod_prod" [src]="image_empresa"></ion-img>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="validations_form">
+
+    <ion-input [(ngModel)]="nombre_empresa" disabled formControlName="nombre_empresa" value={{nombre_empresa}}
+      style="display:none">
+    </ion-input>
+
+    <ion-row>
+      <ion-col size="3">
+        <ion-label position="floating" style="font-weight: bold;"> Cargar una imagen </ion-label>
+        <img style="margin-left: 25%; border-radius: 100%; width: 200px; height: 200px;" [src]="previsualizacion"
+          id="img_upload" style="display: none;"><br>
+
+        <ion-input position="floating" (change)="capturarFile($event)" type="file" style="width: 500px;">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-label position="floating">Seleccione una categoria</ion-label>
+      <ion-select placeholder="Seleccionar" [(ngModel)]="categoria_producto" formControlName="categoria_producto">
+        <ion-select-option *ngFor="let c of categorias" value="{{c.nombre_categoria}}">{{c.nombre_categoria}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.categoria_producto">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('categoria_producto').hasError(validation.type) && (validations_form.get('categoria_producto').dirty || validations_form.get('categoria_producto').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nombre del producto</ion-label>
+      <ion-input [(ngModel)]="nombre_producto" formControlName="nombre_producto"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.nombre_producto">
+          <div style="color: #eb445a;" class="error-message"
+            *ngIf="validations_form.get('nombre_producto').hasError(validation.type) && (validations_form.get('nombre_producto').dirty || validations_form.get('nombre_producto').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-label position="floating">Precio de producto</ion-label>
+      <ion-input [(ngModel)]="precio_producto" type="number" formControlName="precio_producto"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.precio_producto">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('precio_producto').hasError(validation.type) && (validations_form.get('precio_producto').dirty || validations_form.get('precio_producto').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Descripcion de productos</ion-label>
+      <ion-input [(ngModel)]="descripcion_producto" formControlName="descripcion_producto"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.descripcion_producto">
+        <div style="color: #eb445a;" class="error-message"
+          *ngIf="validations_form.get('descripcion_producto').hasError(validation.type) && (validations_form.get('descripcion_producto').dirty || validations_form.get('descripcion_producto').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+
+
+    <ion-button class="btn-enter" (click)="addProducto()" [disabled]="!validations_form.valid" expand="block"
+      fill="solid" size="default">
+      Ingresar producto</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+  <ion-item-sliding *ngFor="let p of productos">
+    <ion-card>
+      <ion-card-header>
+        <th scope="col" style="color:black"> {{p.nombre_producto}} </th>
+      </ion-card-header>
+
+
+      <ion-card-content>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-2">
+              <ion-thumbnail>
+                <ion-img style=" margin: auto; width: 100px; height: 100px;" src={{p.image_producto}}></ion-img>
+              </ion-thumbnail>
+            </div>
+
+            <div class="col-5">
+              <p><b>Categoria: </b>{{p.categoria_producto}}
+                <br>
+                <b>Nombre: </b>{{p.nombre_producto}}
+                <br>
+                <b>Precio: </b>{{p.precio_producto}} $
+                <br>
+                <b>Descripción: </b>{{p.descripcion_producto}}
+                <br>
+                <b>Imagen de Realidad Aumentada: </b>{{p.u3d}}
+              </p>
+
+            </div>
+
+            <div class="col-2">
+              <ion-checkbox class="check_available" checked={{p.estadoP}}
+                (ionChange)="changeEstado($event,p.uid_user,p.id_prod)"> Activo/Inactivo</ion-checkbox>
+              <ion-label> &nbsp;&nbsp;Disponible/No Disponible</ion-label>
+            </div>
+
+            <div class="col-1">
+              <ion-button (click)="removeProducto(p.uid_user,p.id_prod)" class="button_remove">
+                <li class="far fa-trash-alt"> </li>
+              </ion-button>
+
+              <ion-button class="button_edit"
+                (click)="modalEditProd(p.image_producto,p.nombre_producto, p.descripcion_producto, p.precio_producto, p.categoria_producto, p.id_prod, p.uid_user, user[6])"
+                *ngIf="!saveChanges">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+            </div>
+
+            <div class="col-1">
+              <label class="file-label">
+                <span class="file-cta">
+                  <span>
+                    <b>Subir imagen de Realida Aumentada</b>
+                  </span>
+                </span>
+                <input class="file-input" type="file" accept=".glb" (change)="subir3Dimagen($event,p.id_prod)" multiple>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-sliding>
+
+</ion-content>

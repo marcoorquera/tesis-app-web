@@ -1,0 +1,62 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+.container>div {
+    margin: auto;
+    width: 70%;
+    height: 50%;
+}
+
+.backButton {
+    width: 80px;
+    height: 80px;
+    color: white;
+}
+
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+.change-photo-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+}
+
+.edit-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+}
+
+.save-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #89ac76;
+}
+
+.change-psw-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #89ac76;
+}
+
+ion-label {
+    font-weight: bold;
+}
+
+.img_profile {
+    width: auto;
+    height: 220px;
+}
+
+.container_img {
+    text-align: center;
+}
