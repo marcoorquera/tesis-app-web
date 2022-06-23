@@ -1,0 +1,39 @@
+ion-content {
+    --background: url('../../../assets/recursos/imagenes/background5home.jpg') 0 0/100% 100% no-repeat;
+}
+
+.container {
+    text-align: center;
+    --background: transparent;
+}
+
+.titulo_nosotros{
+    text-align: center;
+    font-size: xx-large;
+}
+.title_card{
+    font-size: x-large;
+    text-align: center;
+}
+
+.subtitle_card{
+    font-size: medium;
+    text-align: center;
+}
+
+.content_card{
+    font-size: large;
+    text-align: center;
+}
+
+.img_nosotros1{
+    width: 50vh;
+    height: 25vh;
+    text-align: center;
+}
+
+.img_nosotros2{
+    width: 50vh;
+    height: 25vh;
+    text-align: center;
+}

@@ -62,7 +62,8 @@ const routes: Routes = [
   {
     path: 'lista-vendedores',
     loadChildren: () => import('./pages/lista-vendedores/lista-vendedores.module').then( m => m.ListaVendedoresPageModule)
-  },  {
+  },
+  {
     path: 'promociones',
     loadChildren: () => import('./pages/promociones/promociones.module').then( m => m.PromocionesPageModule)
   },
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'list-cotizar',
     loadChildren: () => import('./pages/list-cotizar/list-cotizar.module').then( m => m.ListCotizarPageModule)
+  },
+  {
+    path: 'nosotros',
+    loadChildren: () => import('./pages/nosotros/nosotros.module').then( m => m.NosotrosPageModule)
   },
 
   

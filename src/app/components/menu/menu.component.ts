@@ -24,4 +24,8 @@ export class MenuComponent implements OnInit {
     this.navCtr.navigateForward('/register')
   }
 
+  goToNosotros(){
+    this.navCtr.navigateForward('/nosotros')
+  }
+
 }
